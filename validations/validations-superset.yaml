@@ -7,27 +7,26 @@ domain:
   type: file
   file-spec:
     filepaths:
-    - name: load-balancer-terraform
+    - name: load_balancer_tf
       path: https://raw.githubusercontent.com/cds-snc/cds-superset/refs/heads/main/terragrunt/aws/load_balancer.tf
       parser: hcl2
 provider:
-  type: kyverno
-  kyverno-spec:
-    policy:
-      apiVersion: json.kyverno.io/v1alpha1
-      kind: ValidatingPolicy
-      metadata:
-        name: load-balancer-https-check
-      spec:
-        rules:
-        - name: protocol-is-https
-          assert:
-            all:
-            - check:
-                load-balancer-terraform:
-                  resource:
-                    aws_lb_listener:
-                      superset:
-                        port: "443"
-                        protocol: "HTTPS"
-                        ssl_policy: "ELBSecurityPolicy-TLS13-1-3-FIPS-2023-04"
+  type: opa
+  opa-spec:
+    rego: |
+      package validate
+      import rego.v1
+      
+      default is_valid = false
+      default msg := "Load balancer listener must be configured to use HTTPS with a strong encryption cipher suite."
+
+      terraform := input["load_balancer_tf"]
+      is_valid if {
+        terraform.resource.aws_lb_listener.superset.port == "443"
+        terraform.resource.aws_lb_listener.superset.protocol == "HTTPS"
+        terraform.resource.aws_lb_listener.superset.ssl_policy == "ELBSecurityPolicy-TLS13-1-3-FIPS-2023-04"
+      }
+    output:
+      validation: validate.is_valid
+      observations:
+        - validate.msg      
