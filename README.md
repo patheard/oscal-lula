@@ -1,10 +1,13 @@
+# OSCAL Lula
+Experiments using [OSCAL](https://pages.nist.gov/OSCAL/) and [Lula](https://github.com/defenseunicorns/lula) for continuous compliance testing.
+
+## Generate findings
 ```sh
-# Generate findings
 prowler aws --compliance nist_800_53_revision_5_aws -f ca-central-1 us-east-1
 ```
 
+## Add component
 ```sh
-# Add component
 lula generate component \
     --catalog-source https://raw.githubusercontent.com/usnistgov/oscal-content/refs/heads/main/nist.gov/SP800-53/rev5/yaml/NIST_SP-800-53_rev5_catalog.yaml \
     --component "superset" \
@@ -12,7 +15,7 @@ lula generate component \
     --output-file oscal.yaml
 ```
 
+## Run validations
 ```sh
-# Validate
 lula validate -f oscal-superset.yaml 
 ```
