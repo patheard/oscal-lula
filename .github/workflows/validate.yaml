@@ -11,14 +11,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up Go
-      uses: actions/setup-go@v5
-      with:
-        go-version: '1.24'
-
     - name: Install Lula
       run: |
-        go install github.com/defenseunicorns/lula/cmd/lula@latest
+        curl -L -o lula https://github.com/defenseunicorns/lula/releases/download/v0.16.0/lula_v0.16.0_Linux_amd64
+        chmod +x lula
+        sudo mv lula /usr/local/bin/
         lula version
 
     - name: Run validations
