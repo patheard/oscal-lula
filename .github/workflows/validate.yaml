@@ -1,0 +1,26 @@
+name: Validate
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.24'
+
+    - name: Install Lula
+      run: |
+        go install github.com/defenseunicorns/lula/cmd/lula@latest
+        lula version
+
+    - name: Run validations
+      run: |
+        lula validate -f oscal-superset.yaml
