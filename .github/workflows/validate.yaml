@@ -3,6 +3,9 @@ name: Validate
 on:
   workflow_dispatch:
 
+env:
+  LULA_VERSION: 'v0.16.0'
+
 jobs:
   validate:
     runs-on: ubuntu-latest
@@ -13,9 +16,12 @@ jobs:
 
     - name: Install Lula
       run: |
-        curl -L -o lula https://github.com/defenseunicorns/lula/releases/download/v0.16.0/lula_v0.16.0_Linux_amd64
-        chmod +x lula
-        sudo mv lula /usr/local/bin/
+        curl -L -o lula_${{ env.LULA_VERSION }}_Linux_amd64 https://github.com/defenseunicorns/lula/releases/download/${{ env.LULA_VERSION }}/lula_${{ env.LULA_VERSION }}_Linux_amd64
+        curl -L -o checksums.txt https://github.com/defenseunicorns/lula/releases/download/${{ env.LULA_VERSION }}/checksums.txt
+        sha256sum -c checksums.txt --ignore-missing
+
+        chmod +x lula_${{ env.LULA_VERSION }}_Linux_amd64
+        sudo mv lula_${{ env.LULA_VERSION }}_Linux_amd64 /usr/local/bin/lula
         lula version
 
     - name: Run validations
