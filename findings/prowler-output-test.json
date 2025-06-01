@@ -1,0 +1,338 @@
+[{
+    "AssessmentStartTime": "2025-05-31T10:26:28.071492",
+    "FindingUniqueId": "prowler-aws-acm_certificates_expiration_check-123456789012-ca-central-1-8bf63a43-24b1-430c-8438-700da23736ef",
+    "Provider": "aws",
+    "CheckID": "acm_certificates_expiration_check",
+    "CheckTitle": "Check if ACM Certificates are about to expire in specific days or less",
+    "CheckType": [
+        "Data Protection"
+    ],
+    "ServiceName": "acm",
+    "SubServiceName": "",
+    "Status": "PASS",
+    "StatusExtended": "ACM Certificate 8bf63a43-24b1-430c-8438-700da23736ef for superset.cdssandbox.xyz expires in 221 days.",
+    "Severity": "high",
+    "ResourceType": "AwsCertificateManagerCertificate",
+    "ResourceDetails": "superset.cdssandbox.xyz",
+    "Description": "Check if ACM Certificates are about to expire in specific days or less",
+    "Risk": "Expired certificates can impact service availability.",
+    "RelatedUrl": "https://docs.aws.amazon.com/config/latest/developerguide/acm-certificate-expiration-check.html",
+    "Remediation": {
+        "Code": {
+            "NativeIaC": "",
+            "Terraform": "",
+            "CLI": "",
+            "Other": ""
+        },
+        "Recommendation": {
+            "Text": "Monitor certificate expiration and take automated action to renew; replace or remove. Having shorter TTL for any security artifact is a general recommendation; but requires additional automation in place. If not longer required delete certificate. Use AWS config using the managed rule: acm-certificate-expiration-check.",
+            "Url": "https://docs.aws.amazon.com/config/latest/developerguide/acm-certificate-expiration-check.html"
+        }
+    },
+    "Compliance": {
+        "CISA": [
+            "your-data-2"
+        ],
+        "SOC2": [
+            "cc_6_7"
+        ],
+        "MITRE-ATTACK": [
+            "T1040"
+        ],
+        "GDPR": [
+            "article_32"
+        ],
+        "HIPAA": [
+            "164_308_a_4_ii_a",
+            "164_312_e_1"
+        ],
+        "AWS-Well-Architected-Framework-Security-Pillar": [
+            "SEC09-BP01"
+        ],
+        "NIST-800-171-Revision-2": [
+            "3_13_1",
+            "3_13_2",
+            "3_13_8",
+            "3_13_11"
+        ],
+        "NIST-800-53-Revision-4": [
+            "ac_4",
+            "ac_17_2",
+            "sc_12"
+        ],
+        "NIST-800-53-Revision-5": [
+            "sc_7_12",
+            "sc_7_16"
+        ],
+        "NIST-CSF-1.1": [
+            "ac_5",
+            "ds_2"
+        ],
+        "RBI-Cyber-Security-Framework": [
+            "annex_i_1_3"
+        ],
+        "FFIEC": [
+            "d3-pc-im-b-1"
+        ],
+        "FedRamp-Moderate-Revision-4": [
+            "ac-4",
+            "ac-17-2",
+            "sc-12"
+        ],
+        "FedRAMP-Low-Revision-4": [
+            "ac-17",
+            "sc-12"
+        ]
+    },
+    "Categories": [],
+    "DependsOn": [],
+    "RelatedTo": [],
+    "Notes": "",
+    "Profile": null,
+    "AccountId": "123456789012",
+    "OrganizationsInfo": null,
+    "Region": "ca-central-1",
+    "ResourceId": "307a6247-4851-476c-8810-55cbe279d23a",
+    "ResourceArn": "arn:aws:acm:ca-central-1:123456789012:certificate/307a6247-4851-476c-8810-55cbe279d23a",
+    "ResourceTags": {}
+},{
+    "AssessmentStartTime": "2025-05-31T10:26:28.071492",
+    "FindingUniqueId": "prowler-aws-acm_certificates_expiration_check-123456789012-us-east-1-8bf63a43-24b1-430c-8438-700da23736ef",
+    "Provider": "aws",
+    "CheckID": "acm_certificates_expiration_check",
+    "CheckTitle": "Check if ACM Certificates are about to expire in specific days or less",
+    "CheckType": [
+        "Data Protection"
+    ],
+    "ServiceName": "acm",
+    "SubServiceName": "",
+    "Status": "FAIL",
+    "StatusExtended": "ACM Certificate 8bf63a43-24b1-430c-8438-700da23736ef for docs.superset.cdssandbox.xyz expires in 299 days.",
+    "Severity": "medium",
+    "ResourceType": "AwsCertificateManagerCertificate",
+    "ResourceDetails": "docs.superset.cdssandbox.xyz",
+    "Description": "Check if ACM Certificates are about to expire in specific days or less",
+    "Risk": "Expired certificates can impact service availability.",
+    "RelatedUrl": "https://docs.aws.amazon.com/config/latest/developerguide/acm-certificate-expiration-check.html",
+    "Remediation": {
+        "Code": {
+            "NativeIaC": "",
+            "Terraform": "",
+            "CLI": "",
+            "Other": ""
+        },
+        "Recommendation": {
+            "Text": "Monitor certificate expiration and take automated action to renew; replace or remove. Having shorter TTL for any security artifact is a general recommendation; but requires additional automation in place. If not longer required delete certificate. Use AWS config using the managed rule: acm-certificate-expiration-check.",
+            "Url": "https://docs.aws.amazon.com/config/latest/developerguide/acm-certificate-expiration-check.html"
+        }
+    },
+    "Compliance": {
+        "CISA": [
+            "your-data-2"
+        ],
+        "SOC2": [
+            "cc_6_7"
+        ],
+        "MITRE-ATTACK": [
+            "T1040"
+        ],
+        "GDPR": [
+            "article_32"
+        ],
+        "HIPAA": [
+            "164_308_a_4_ii_a",
+            "164_312_e_1"
+        ],
+        "AWS-Well-Architected-Framework-Security-Pillar": [
+            "SEC09-BP01"
+        ],
+        "NIST-800-171-Revision-2": [
+            "3_13_1",
+            "3_13_2",
+            "3_13_8",
+            "3_13_11"
+        ],
+        "NIST-800-53-Revision-4": [
+            "ac_4",
+            "ac_17_2",
+            "sc_12"
+        ],
+        "NIST-800-53-Revision-5": [
+            "ac_4",
+            "sc_7_12",
+            "sc_7_16"
+        ],
+        "NIST-CSF-1.1": [
+            "ac_5",
+            "ds_2"
+        ],
+        "RBI-Cyber-Security-Framework": [
+            "annex_i_1_3"
+        ],
+        "FFIEC": [
+            "d3-pc-im-b-1"
+        ],
+        "FedRamp-Moderate-Revision-4": [
+            "ac-4",
+            "ac-17-2",
+            "sc-12"
+        ],
+        "FedRAMP-Low-Revision-4": [
+            "ac-17",
+            "sc-12"
+        ]
+    },
+    "Categories": [],
+    "DependsOn": [],
+    "RelatedTo": [],
+    "Notes": "",
+    "Profile": null,
+    "AccountId": "123456789012",
+    "OrganizationsInfo": null,
+    "Region": "us-east-1",
+    "ResourceId": "ba8b10cc-b8b6-472e-a6d2-4792d5e0c44f",
+    "ResourceArn": "arn:aws:acm:us-east-1:123456789012:certificate/ba8b10cc-b8b6-472e-a6d2-4792d5e0c44f",
+    "ResourceTags": {}
+},{
+    "AssessmentStartTime": "2025-05-31T10:26:28.071492",
+    "FindingUniqueId": "prowler-aws-awslambda_function_not_publicly_accessible-123456789012-ca-central-1-cds-superset-docs",
+    "Provider": "aws",
+    "CheckID": "awslambda_function_not_publicly_accessible",
+    "CheckTitle": "Check if Lambda functions have resource-based policy set as Public.",
+    "CheckType": [],
+    "ServiceName": "lambda",
+    "SubServiceName": "",
+    "Status": "PASS",
+    "StatusExtended": "Lambda function cds-superset-docs has a policy resource-based policy not public.",
+    "Severity": "critical",
+    "ResourceType": "AwsLambdaFunction",
+    "ResourceDetails": "",
+    "Description": "Check if Lambda functions have resource-based policy set as Public.",
+    "Risk": "Publicly accessible services could expose sensitive data to bad actors.",
+    "RelatedUrl": "https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html",
+    "Remediation": {
+        "Code": {
+            "NativeIaC": "https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Lambda/function-exposed.html",
+            "Terraform": "https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Lambda/function-exposed.html",
+            "CLI": "https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Lambda/function-exposed.html",
+            "Other": ""
+        },
+        "Recommendation": {
+            "Text": "Grant usage permission on a per-resource basis and applying least privilege principle.",
+            "Url": "https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html"
+        }
+    },
+    "Compliance": {
+        "CISA": [
+            "your-systems-3",
+            "your-data-2"
+        ],
+        "MITRE-ATTACK": [
+            "T1190"
+        ],
+        "HIPAA": [
+            "164_308_a_1_ii_b",
+            "164_308_a_3_i",
+            "164_312_a_1",
+            "164_312_e_1"
+        ],
+        "GxP-21-CFR-Part-11": [
+            "11.10-d",
+            "11.10-g"
+        ],
+        "AWS-Well-Architected-Framework-Security-Pillar": [
+            "SEC03-BP07",
+            "SEC03-BP08",
+            "SEC05-BP01",
+            "SEC06-BP02"
+        ],
+        "NIST-800-171-Revision-2": [
+            "3_1_1",
+            "3_1_2",
+            "3_1_3",
+            "3_1_14",
+            "3_13_1",
+            "3_13_2",
+            "3_13_5"
+        ],
+        "NIST-800-53-Revision-4": [
+            "ac_4",
+            "sc_7_3",
+            "sc_7"
+        ],
+        "NIST-800-53-Revision-5": [
+            "ac_2_6",
+            "ac_3",
+            "ac_3_7",
+            "ac_4_21",
+            "ac_6",
+            "ac_17_b",
+            "ac_17_1",
+            "ac_17_4_a",
+            "ac_17_9",
+            "ac_17_10",
+            "mp_2",
+            "sc_7_2",
+            "sc_7_3",
+            "sc_7_9_a",
+            "sc_7_11",
+            "sc_7_12",
+            "sc_7_16",
+            "sc_7_20",
+            "sc_7_21",
+            "sc_7_24_b",
+            "sc_7_a",
+            "sc_7_b",
+            "sc_7_c",
+            "sc_25"
+        ],
+        "ENS-RD2022": [
+            "op.acc.4.aws.iam.1"
+        ],
+        "NIST-CSF-1.1": [
+            "ac_3",
+            "ac_5",
+            "pt_4"
+        ],
+        "RBI-Cyber-Security-Framework": [
+            "annex_i_1_3"
+        ],
+        "FFIEC": [
+            "d3-pc-im-b-1"
+        ],
+        "PCI-3.2.1": [
+            "lambda"
+        ],
+        "FedRamp-Moderate-Revision-4": [
+            "ac-3",
+            "ac-4",
+            "ac-6",
+            "ac-17-1",
+            "cm-2",
+            "sc-7-3",
+            "sc-7"
+        ],
+        "FedRAMP-Low-Revision-4": [
+            "ac-3",
+            "ac-17",
+            "cm-2",
+            "sc-7"
+        ]
+    },
+    "Categories": [
+        "internet-exposed"
+    ],
+    "DependsOn": [],
+    "RelatedTo": [],
+    "Notes": "",
+    "Profile": null,
+    "AccountId": "123456789012",
+    "OrganizationsInfo": null,
+    "Region": "ca-central-1",
+    "ResourceId": "cds-superset-docs",
+    "ResourceArn": "arn:aws:lambda:ca-central-1:123456789012:function:cds-superset-docs",
+    "ResourceTags": {
+        "CostCentre": "cds-superset-docs-staging",
+        "Terraform": "true"
+    }
+}]

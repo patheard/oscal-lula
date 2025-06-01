@@ -64,3 +64,48 @@ provider:
                         port: "443"
                         protocol: "HTTPS"
                         ssl_policy: "ELBSecurityPolicy-TLS13-1-3-FIPS-2023-04"
+---
+lula-version: ">= v0.16.0"
+metadata:
+  name: prowler-ac-4
+  description: Prowler NIST-800-53-Revision-5 AC-4 findings that are critical/high severity must pass.
+  uuid: dad53ec9-6f3e-479b-8858-3e7da20a6227
+domain:
+  type: file
+  file-spec:
+    filepaths:
+    - name: prowler_results
+      path: ./findings/prowler-output-test.json
+      parser: json
+provider:
+  type: opa
+  opa-spec:
+    rego: |
+      package validate
+      import rego.v1
+
+      default is_valid := false
+      default msg := "All findings passed"
+
+      is_valid if {
+        count(failed_findings) == 0
+      }
+
+      failed_findings contains finding if {
+        some finding in input["prowler_results"]
+        finding.Status != "PASS"
+        finding.Severity in {"critical", "high"}
+
+        nist_controls := finding.Compliance["NIST-800-53-Revision-5"]
+        nist_controls != null
+
+        ac4_control := [control | some control in nist_controls; startswith(lower(control), "ac_4")]
+        count(ac4_control) > 0
+      }
+      msg := sprintf("Failed: %v", [finding.CheckID | some finding in failed_findings]) if {
+        is_valid == false
+      }
+    output:
+      validation: validate.is_valid
+      observations:
+        - validate.msg

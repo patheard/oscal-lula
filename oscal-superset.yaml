@@ -16,6 +16,9 @@ component-definition:
                 - href: file:./validations/validations-superset.yaml
                   rel: lula
                   resource-fragment: '#1504e5b1-2548-4616-8cdf-cec3283bd2d2'
+                - href: file:./validations/validations-superset.yaml
+                  rel: lula
+                  resource-fragment: '#dad53ec9-6f3e-479b-8858-3e7da20a6227'
           props:
             - name: generation
               ns: https://docs.lula.dev/oscal/ns
