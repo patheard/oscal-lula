@@ -80,29 +80,22 @@ domain:
 provider:
   type: opa
   opa-spec:
+    modules:
+      validations: validations/validations.rego
     rego: |
       package validate
       import rego.v1
+      import data.validations
 
       default is_valid := false
       default msg := "All findings passed"
 
+      failed_findings := data.validations.failed_findings(input["prowler_results"], "NIST-800-53-Revision-5", "ac_4")
       is_valid if {
         count(failed_findings) == 0
       }
 
-      failed_findings contains finding if {
-        some finding in input["prowler_results"]
-        finding.Status != "PASS"
-        finding.Severity in {"critical", "high"}
-
-        nist_controls := finding.Compliance["NIST-800-53-Revision-5"]
-        nist_controls != null
-
-        ac4_control := [control | some control in nist_controls; startswith(lower(control), "ac_4")]
-        count(ac4_control) > 0
-      }
-      msg := sprintf("Failed: %v", [finding.CheckID | some finding in failed_findings]) if {
+      msg := sprintf("Failed checks: %v", [concat(", ", [finding.CheckID | some finding in failed_findings])]) if {
         is_valid == false
       }
     output:
