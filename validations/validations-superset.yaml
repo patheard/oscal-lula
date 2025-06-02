@@ -85,18 +85,17 @@ provider:
     rego: |
       package validate
       import rego.v1
-      import data.validations
+      import data.validations as validations
 
       default is_valid := false
-      default msg := "All findings passed"
+      default msg := "Compliance evaluation not performed."
 
-      failed_findings := data.validations.failed_findings(input["prowler_results"], "NIST-800-53-Revision-5", "ac_4")
+      findings_relevant := validations.findings_relevant(input["prowler_results"], "NIST-800-53-Revision-5", "ac_4")
+      findings_failed := validations.findings_failed(findings_relevant, "PASS", {"critical", "high", "medium"})
+      msg := validations.findings_msg(findings_relevant, findings_failed, is_valid)
+      
       is_valid if {
-        count(failed_findings) == 0
-      }
-
-      msg := sprintf("Failed checks: %v", [concat(", ", [finding.CheckID | some finding in failed_findings])]) if {
-        is_valid == false
+        count(findings_failed) == 0
       }
     output:
       validation: validate.is_valid

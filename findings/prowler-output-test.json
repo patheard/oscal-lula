@@ -108,7 +108,7 @@
     "SubServiceName": "",
     "Status": "FAIL",
     "StatusExtended": "ACM Certificate 8bf63a43-24b1-430c-8438-700da23736ef for docs.superset.cdssandbox.xyz expires in 299 days.",
-    "Severity": "medium",
+    "Severity": "low",
     "ResourceType": "AwsCertificateManagerCertificate",
     "ResourceDetails": "docs.superset.cdssandbox.xyz",
     "Description": "Check if ACM Certificates are about to expire in specific days or less",
